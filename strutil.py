@@ -1,4 +1,3 @@
-
 def common_prefix(a, *others, **options):
     """
     Find common prefix of several `string`s, tuples of string, or other nested
@@ -8,10 +7,10 @@ def common_prefix(a, *others, **options):
     if field `recursive` in `options` is set to `False`, it will run non-recursively.
     :return: a common prefix of the same type of `a`.
     """
-    recursive = options.get('recursive', True)
+    recursive = options.get("recursive", True)
     for b in others:
         if type(a) is not type(b):
-            raise TypeError('a and b has different type: ' + repr((a, b)))
+            raise TypeError("a and b has different type: " + repr((a, b)))
         a = _common_prefix(a, b, recursive)
 
     return a
@@ -24,7 +23,7 @@ def _common_prefix(a, b, recursive=True):
             break
 
         if type(elt) is not type(b[i]):
-            raise TypeError('a and b has different type: ' + repr((elt, b[i])))
+            raise TypeError("a and b has different type: " + repr((elt, b[i])))
 
         if elt == b[i]:
             rst.append(elt)
@@ -37,8 +36,7 @@ def _common_prefix(a, b, recursive=True):
     # down.
     # And non-iterable element is skipped, such as int.
     i = len(rst)
-    if recursive and i < len(a) and i < len(b) and not isinstance(a, str) and hasattr(a[i], '__len__'):
-
+    if recursive and i < len(a) and i < len(b) and not isinstance(a, str) and hasattr(a[i], "__len__"):
         last_prefix = _common_prefix(a[i], b[i])
 
         # discard empty tuple, list or string
@@ -50,7 +48,4 @@ def _common_prefix(a, b, recursive=True):
     elif isinstance(a, list):
         return rst
     else:
-        return ''.join(rst)
-
-
-
+        return "".join(rst)
