@@ -3,8 +3,9 @@ Find common prefix of several string, tuples of string, or other nested structur
 It returns the shortest prefix: empty string or empty tuple is removed.
 """
 
-__version__ = "0.1.0"
-__name__ = "k3pattern"
+from importlib.metadata import version
+
+__version__ = version("k3pattern")
 
 from .strutil import (
     common_prefix,

@@ -10,7 +10,7 @@ def common_prefix(a, *others, **options):
     """
     recursive = options.get('recursive', True)
     for b in others:
-        if type(a) != type(b):
+        if type(a) is not type(b):
             raise TypeError('a and b has different type: ' + repr((a, b)))
         a = _common_prefix(a, b, recursive)
 
@@ -23,7 +23,7 @@ def _common_prefix(a, b, recursive=True):
         if i == len(b):
             break
 
-        if type(elt) != type(b[i]):
+        if type(elt) is not type(b[i]):
             raise TypeError('a and b has different type: ' + repr((elt, b[i])))
 
         if elt == b[i]:
