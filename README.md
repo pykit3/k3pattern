@@ -1,7 +1,6 @@
 # k3pattern
 
 [![Action-CI](https://github.com/pykit3/k3pattern/actions/workflows/python-package.yml/badge.svg)](https://github.com/pykit3/k3pattern/actions/workflows/python-package.yml)
-[![Build Status](https://travis-ci.com/pykit3/k3pattern.svg?branch=master)](https://travis-ci.com/pykit3/k3pattern)
 [![Documentation Status](https://readthedocs.org/projects/k3pattern/badge/?version=stable)](https://k3pattern.readthedocs.io/en/stable/?badge=stable)
 [![Package](https://img.shields.io/pypi/pyversions/k3pattern)](https://pypi.org/project/k3pattern)
 
