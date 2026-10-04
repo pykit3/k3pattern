@@ -20,19 +20,19 @@ pip install k3pattern
 from k3pattern import common_prefix
 
 # Find common prefix of strings
-common_prefix('abc', 'abd')
+common_prefix("abc", "abd")
 # 'ab'
 
 # Find common prefix of tuples
-common_prefix(('a', 'b', 'c'), ('a', 'b', 'd'))
+common_prefix(("a", "b", "c"), ("a", "b", "d"))
 # ('a', 'b')
 
 # Nested structures (recursive by default)
-common_prefix(('a', 'bc', 'x'), ('a', 'bd', 'y'))
+common_prefix(("a", "bc", "x"), ("a", "bd", "y"))
 # ('a', 'b')
 
 # Disable recursive mode
-common_prefix(('a', 'bc', 'x'), ('a', 'bd', 'y'), recursive=False)
+common_prefix(("a", "bc", "x"), ("a", "bd", "y"), recursive=False)
 # ('a',)
 ```
 

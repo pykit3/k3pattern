@@ -11,7 +11,6 @@ from .strutil import (
     common_prefix,
 )
 
-
 __all__ = [
     "common_prefix",
 ]

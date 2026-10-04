@@ -2,6 +2,7 @@ import os
 import unittest
 
 import k3ut
+
 import k3pattern
 
 dd = k3ut.dd
