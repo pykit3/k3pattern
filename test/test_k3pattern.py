@@ -1,3 +1,4 @@
+import copy
 import os
 import random
 import unittest
@@ -219,6 +220,19 @@ class TestK3pattern(unittest.TestCase):
                 [1, 2, 4],
                 [1, 2],
             ),
+            # The first two give ("a", ("45", "xy")), and a later input shortens the nested prefix.
+            (
+                ("a", ("45", "xyz")),
+                ("a", ("45", "xyw")),
+                ("a", ("45", "xa")),
+                ("a", ("45", "x")),
+            ),
+            (
+                ("a", ("45", "xyz")),
+                ("a", ("45", "xyw")),
+                ("a", ("4",)),
+                ("a", ("4",)),
+            ),
         )
 
         for args in cases:
@@ -230,6 +244,18 @@ class TestK3pattern(unittest.TestCase):
             dd("rst: ", rst)
 
             self.assertEqual(expected, rst)
+
+    def test_common_prefix_keeps_inputs(self):
+        # common_prefix() builds new lists and leaves the lists of the caller unchanged.
+        a = [1, [2, 3], "abc"]
+        b = [1, [2, 3], "abd"]
+        c = [1, [2, 4]]
+        want = copy.deepcopy((a, b, c))
+
+        rst = k3pattern.common_prefix(a, b, c)
+
+        self.assertEqual([1, [2]], rst)
+        self.assertEqual(want, (a, b, c))
 
     def test_common_prefix_no_recursive(self):
         cases = (
