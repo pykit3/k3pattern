@@ -54,6 +54,9 @@ class TestK3pattern(unittest.TestCase):
             dd("wrong type: ", repr(a), " ", repr(b))
             self.assertRaises(TypeError, k3pattern.common_prefix, a, b)
 
+        # A misspelled option is an error, not a silent recursive run.
+        self.assertRaises(TypeError, k3pattern.common_prefix, "abc", "abd", recusive=False)
+
     def test_common_prefix(self):
         cases = (
             (

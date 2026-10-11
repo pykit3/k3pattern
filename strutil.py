@@ -1,13 +1,12 @@
-def common_prefix(a, *others, **options):
+def common_prefix(a, *others, recursive=True):
     """
     Find common prefix of several `string`s, tuples of string, or other nested
     structure, recursively by default.
     It returns the shortest prefix: empty string or empty tuple is removed.
     :param a: `a` and element in `others`: are `string`, `tuple` or `list` to find common prefix of them.
-    if field `recursive` in `options` is set to `False`, it will run non-recursively.
+    :param recursive: if it is `False`, it will run non-recursively.
     :return: a common prefix of the same type of `a`.
     """
-    recursive = options.get("recursive", True)
     for b in others:
         if type(a) is not type(b):
             raise TypeError("a and b has different type: " + repr((a, b)))
