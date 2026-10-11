@@ -16,6 +16,9 @@ def common_prefix(a, *others, recursive=True):
 
 
 def _common_prefix(a, b, recursive=True):
+    if not isinstance(a, (str, tuple, list)):
+        raise TypeError("expect str, tuple or list: " + repr(a))
+
     rst = []
     for i, elt in enumerate(a):
         if i == len(b):

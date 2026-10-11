@@ -303,6 +303,22 @@ class TestK3pattern(unittest.TestCase):
             dd("wrong nested type: ", repr(a), " ", repr(b))
             self.assertRaises(TypeError, k3pattern.common_prefix, a, b)
 
+    def test_common_prefix_unsupported_type(self):
+        # Only str, tuple and list are split into a prefix, at the top or nested.
+        cases = (
+            (b"ab", b"ac", "expect str, tuple or list: b'ab'"),
+            (("a", b"xy"), ("a", b"xz"), "expect str, tuple or list: b'xy'"),
+            (("a", {"k": 1}), ("a", {"k": 2}), "expect str, tuple or list: {'k': 1}"),
+            (("a", {1, 2}), ("a", {1, 3}), "expect str, tuple or list: {1, 2}"),
+        )
+
+        for a, b, expected in cases:
+            dd("unsupported type: ", repr(a), " ", repr(b))
+            with self.assertRaises(TypeError) as ctx:
+                k3pattern.common_prefix(a, b)
+
+            self.assertEqual(expected, str(ctx.exception))
+
     def test_common_prefix_random_tuples_of_str(self):
         # Reference model: the common elements, then the common prefix of the
         # first differing str elements if it is not empty.
